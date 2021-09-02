@@ -4,6 +4,7 @@ import {
   Route
 } from 'react-router-dom';
 import Login from './views/login';
+import Gallery from './views/gallery';
 
 function App() {
   return (
@@ -12,18 +13,12 @@ function App() {
           <Route path='/login'>
               <Login />
           </Route>
-      </Switch>
-      <Switch>
           <Route path='/'>
-              {/* <Login /> */}
+              <Gallery />
           </Route>
-        </Switch>
-      <Switch>
           <Route path='/photo/:id'>
               <Login />
           </Route>
-      </Switch>
-      <Switch>
         <Route path='/logout'>
             <Login />
         </Route>

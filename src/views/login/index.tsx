@@ -15,7 +15,7 @@ const Login = () => {
         const { data: users } = await axios.get('https://jsonplaceholder.typicode.com/users');
         const match = users.find((user: User) => user.username === username);
         if (match) {
-            localStorage.setItem('loginToken', JSON.stringify(Math.random()));
+            localStorage.setItem('loginToken', JSON.stringify(match.id));
             setVerified(true);
         }
     };
