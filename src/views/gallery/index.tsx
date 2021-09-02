@@ -49,10 +49,10 @@ const Gallery = () => {
                 return (
                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <div style={{ width: '50vw' || 300, margin: 30 }}>
-                            <img src={imageUrl} alt="Randomly generated from Unsplash." />
-                            <div style={{ border: '1px solid black', height: '100%' }}>
-                                <h1 className="center-text pad-text-horionztal">{capitalizeFirstWord(title)}</h1>
-                                <p className="center-text pad-text-horionztal">{body}</p>
+                            <img src={imageUrl} style={{ width: '100%', verticalAlign: 'bottom', border: '1px solid black', borderBottom: 'none' }} alt="Randomly generated from Unsplash." />
+                            <div style={{ border: '1px solid black', width: '100%' }}>
+                                <h1 style={{ padding: '0px 10px 0px 10px', paddingLeft: 100 }}>{capitalizeFirstWord(title)}</h1>
+                                <p style={{ padding: '0px 100px 0px 100px' }}>{body}</p>
                             </div>
                             
                         </div>
