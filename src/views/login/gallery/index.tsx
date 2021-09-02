@@ -1,7 +1,36 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router';
 import axios from 'axios';
-import { User } from './types';
+// import { v4 as uuidv4 } from 'uuid';
+
+type Address = {
+    city: string;
+    geo: {
+        lat: string; 
+        lng: string;
+    }
+    street: string;
+    suite: string;
+    zipcode: string;
+}
+
+type Company = {
+    bs: string;
+    catchPhrase: string;
+    name: string;
+}
+
+type User = {
+    address: Address,
+    company: Company,
+    email: string;
+    id: number;
+    name: string;
+    phone: string;
+    username: string;
+    website: string;
+    
+}
 
 const Login = () => {
     const [username, setUsername] = useState<EventTarget | string>('');

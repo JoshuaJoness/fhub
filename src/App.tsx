@@ -15,7 +15,7 @@ function App() {
       </Switch>
       <Switch>
           <Route path='/'>
-              <Login />
+              {/* <Login /> */}
           </Route>
         </Switch>
       <Switch>
