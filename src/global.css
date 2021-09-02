@@ -1,0 +1,15 @@
+.ellipsis {
+
+}
+
+.center-text {
+    text-align: center;
+}
+
+.pad-text-horionztal {
+    padding: 0px 10px 0px 10px;
+}
+
+img:hover {
+    opacity: 0.5;
+}
