@@ -4,7 +4,7 @@ import { FetchImage } from 'random-image-unsplash';
 import Card from '../../components/Card';
 import '../../global.css';
 
-type Post =  {
+export type Post =  {
     userId: number;
     id: number;
     title: string;
@@ -58,11 +58,13 @@ const Gallery = () => {
             <div className="flex">
                 {showPosts ? userPosts.map(({ id, title, body, imageUrl }) => {
                     return (
-                        <Card key={id} title={title} body={body} imageUrl={imageUrl || ''} />
+                        <span>UPDATE</span>
+                        // <Card key={id} title={title} body={body} imageUrl={imageUrl || ''} />
                     )
                 }) : userAlbums.map(({ id, title, imageUrl }) => {
                     return (
-                        <Card key={id} id={id} title={title} imageUrl={imageUrl || ''} />
+                        <span>UPDATE</span>
+                        // <Card key={id} id={id} title={title} imageUrl={imageUrl || ''} />
                     )
                 })}
             </div>

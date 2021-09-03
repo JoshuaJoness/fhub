@@ -28,12 +28,9 @@ const Album = (props: any) => {
         getPhotos();
     }, []);
 
-    useEffect(() => {
-        console.log(userPhotos, "***")
-    }, [userPhotos])
     return (
         <div className="flex">
-            {userPhotos.map(({ albumId, id, thumbnailUrl, title, url }) => <Card noLink key={id} imageUrl={url} title={title} />)}
+            {/* {userPhotos.map(({ albumId, id, thumbnailUrl, title, url }) => <Card noLink key={id} imageUrl={url} title={title} />)} */}
         </div>
     )
 }
