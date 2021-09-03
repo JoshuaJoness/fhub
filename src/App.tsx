@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 import Login from './views/login';
 import Gallery from './views/gallery';
+import Galleries from './views/galleries';
 import Album from './views/album';
 import Nav from './components/Nav';
 
@@ -13,7 +14,7 @@ function App() {
     <div>
       <Nav />
       <Switch>
-        <Route path='/my-gallery'>
+        <Route path='/gallery'>
               <Gallery />
           </Route>
           <Route path='/albums/:id'>
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route path='/login'>
               <Login />
+          </Route>
+          <Route path='/'>
+              <Galleries />
           </Route>
       </Switch>
     </div>

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../global.css';
+import Card from '../../components/Card';
 
 type Photo =  {
-    userId: number;
+    albumId: number;
     id: number;
     title: string;
-    body: string;
-    imageUrl?: string;
+    thumbnailUrl: string;
+    url: string;
 }
 
 const Album = (props: any) => {
@@ -20,9 +21,7 @@ const Album = (props: any) => {
             const id = path[path.length -1 ];
             console.log(typeof id)
             if (typeof id === 'string') {
-                console.log('yo')
-                const { data: photos } = await axios.get(`'https://jsonplaceholder.typicode.com/albums/${id}/photos'`); // TODO fix route
-                console.log(photos)
+                const { data: photos } = await axios.get<Photo[]>(`https://jsonplaceholder.typicode.com/albums/${id}/photos`);
                 setUserPhotos(photos)
             }
         }
@@ -33,8 +32,8 @@ const Album = (props: any) => {
         console.log(userPhotos, "***")
     }, [userPhotos])
     return (
-        <div>
-            <h1>A</h1>
+        <div className="flex">
+            {userPhotos.map(({ albumId, id, thumbnailUrl, title, url }) => <Card noLink key={id} imageUrl={url} title={title} />)}
         </div>
     )
 }

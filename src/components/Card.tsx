@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 type Props = {
+    noLink?: boolean;
     id?: number;
     imageUrl: string;
     title: string;
@@ -17,24 +18,32 @@ const capitalizeFirstWord = (title: string) => {
     }).join('');
 };
 
-const Card = ({ id, imageUrl, title, body }:Props) => (
+const Card = ({ noLink, id, imageUrl, title, body }:Props) => (
         <div style={{ width: imageUrl ? 500 : 300, height: '100%', margin: 30 }}>
-            {imageUrl ? 
+            {!noLink && imageUrl ? 
             <Link to={`/albums/${id}`}>
                 <img 
+                    src={imageUrl} 
+                    style={{ 
+                        width: '100%', 
+                        verticalAlign: 'bottom', 
+                        border: '1px solid black', 
+                        borderBottom: 'none' }} 
+                    alt="Randomly generated from Unsplash." 
+                /> 
+            </Link>
+             : 
+             <img 
                 src={imageUrl} 
                 style={{ 
                     width: '100%', 
                     verticalAlign: 'bottom', 
                     border: '1px solid black', 
                     borderBottom: 'none' }} 
-                    alt="Randomly generated from Unsplash." 
-                /> 
-            </Link>
-             : 
-             null}
+                alt="Randomly generated from Unsplash." 
+            /> }
             <div style={{ border: '1px solid black', width: '100%', height: 150 }}>
-                {imageUrl ? <Link 
+                {!noLink && imageUrl ? <Link 
                     className="ellipsis"
                     style={{ padding: '0px 10px 0px 10px' }} 
                     to={`/albums/${id}`}

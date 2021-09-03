@@ -19,7 +19,7 @@ type Album = {
     imageUrl?: string;
 }
 
-const Gallery = () => {
+const Galleries = () => {
     const [loading, setLoading] = useState(false);
     const [showPosts, setShowPosts] = useState(false);
     const [userPosts, setUserPosts] = useState<Post[]>([]);
@@ -70,4 +70,4 @@ const Gallery = () => {
     )
 }
 
-export default Gallery;
+export default Galleries;
