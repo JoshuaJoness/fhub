@@ -3,9 +3,9 @@ import axios from 'axios';
 import { FetchImage } from 'random-image-unsplash';
 import { Helmet } from "react-helmet";
 import PhotoCard from '../../components/PhotoCard';
-import '../../global.css';
 import Nav from '../../components/Nav';
 import Loader from '../../components/Loader';
+import '../../global.css';
 
 export type Post =  {
     userId: number;

@@ -11,7 +11,7 @@ const Nav = () => {
     }
 
     return logout ? <Redirect to="/login" /> : (
-        <div className="flex-space-between title" style={{ padding: 30, flexWrap: 'wrap', backgroundColor: '#36453B' }}>
+        <div className="flex-space-between title" style={{ padding: 30, flexWrap: 'wrap', backgroundColor: '#36453B' }} aria-label="navigation-bar">
             <Link to='/' className="app-title">
                 PHOTOAPPY
             </Link>

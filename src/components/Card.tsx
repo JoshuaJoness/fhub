@@ -28,12 +28,10 @@ const Card = ({ postId, imageUrl, title, body, comments, username, email, date, 
     const [userComment, setUserComment] = useState('');
     const [userCommentTitle, setUserCommentTitle] = useState('');
     const handleInput = (userInput: string) => {
-        // TODO set max char limit on input
-        setUserComment(userInput)
+        setUserComment(userInput) // TODO set max char limit on input
     }
     const handleTitleInput = (userInput: string) => {
-        // TODO set max char limit on input
-        setUserCommentTitle(userInput)
+        setUserCommentTitle(userInput) // TODO set max char limit on input
     }
     const handleSubmit = async () => {
         const { status, data: newComment } = await axios.post(`https://jsonplaceholder.typicode.com/comments`, {
@@ -52,7 +50,7 @@ const Card = ({ postId, imageUrl, title, body, comments, username, email, date, 
     }
 
     return (
-        <div className="card-container" style={{ display: 'block', margin: '60px 30px' }}>
+        <div className="card-container" style={{ display: 'block', margin: '60px 30px' }} aria-label="content-card">
             <div className="flex-space-between" style={{ padding: 10, display: 'flex', flexDirection: 'column', backgroundColor: '#fff' }}>
                 <span className="bold" style={{ fontSize: 25 }}>
                     {capitalizeFirstWord(title)}

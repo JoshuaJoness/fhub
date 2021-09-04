@@ -28,8 +28,6 @@ const Album = () => {
         getPhotos();
     }, []);
 
-    console.log(window.location)
-
     return (
         <div>
             <Helmet>

@@ -8,7 +8,6 @@ import Nav from '../../components/Nav';
 import Loader from '../../components/Loader';
 import '../../global.css';
 
-
 interface PostWithComments extends Post {
     userId: number;
     id: number;

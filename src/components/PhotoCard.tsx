@@ -11,7 +11,7 @@ type Props = {
 }
 
 const PhotoCard = ({ id, title, imageUrl, noLink }:Props) => (
-    <div className="card-container" style={{ display: 'block', backgroundColor: '#F5F9E9' }}>
+    <div className="card-container" style={{ display: 'block', backgroundColor: '#F5F9E9' }} aria-label="content-card-with-photo">
         <Link to={`/albums/${id}`} className="no-hover">
             <img 
                 src={imageUrl} 

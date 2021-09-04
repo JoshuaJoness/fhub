@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from '../../components/Card';
 import { Helmet } from "react-helmet";
-import '../../global.css';
 import Nav from '../../components/Nav';
 import Loader from '../../components/Loader';
 import '../../global.css';
