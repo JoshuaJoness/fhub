@@ -23,7 +23,6 @@ type Album = {
 
 const Albums = () => {
     const [loading, setLoading] = useState(false);
-    const [showPosts, setShowPosts] = useState(false);
     const [userAlbums, setUserAlbums] = useState<Album[]>([]);
 
     useEffect(() => {

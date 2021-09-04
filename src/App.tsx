@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React from 'react';
 import { 
   Switch,
   Route,
@@ -12,18 +12,6 @@ import Album from './views/album';
 
 function App() {
   const isAuthenticated = !!localStorage.getItem('userId');
-  const [screensize, setScreenSize] = useState({ width: Infinity, height: Infinity });
-
-  useEffect(() => {
-    window.addEventListener('resize', () => {
-        setScreenSize({ 
-            width: window.innerWidth, 
-            height: window.innerHeight 
-        })
-    })
-}, [])
-
-const smallScreenSize = screensize.width < 800;
 
   return (
     <div>
