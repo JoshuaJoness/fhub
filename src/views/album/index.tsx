@@ -31,7 +31,7 @@ const Album = () => {
         <div >
             <Nav />
             <div>
-                {userPhotos.map(({ id, thumbnailUrl, title, }) => <PhotoCard id={id} imageUrl={thumbnailUrl} title={title} noLink />)}
+                {userPhotos.map(({ id, thumbnailUrl, title, }) => <PhotoCard key={id} id={id} imageUrl={thumbnailUrl} title={title} noLink />)}
             </div>
         </div>
     )
