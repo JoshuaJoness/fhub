@@ -1,7 +1,7 @@
 import React, {  useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet';
 import { User } from './types';
 
 const Login = (props: any) => {
