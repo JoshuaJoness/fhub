@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FetchImage } from 'random-image-unsplash';
-import AlbumCard from '../../components/AlbumCard';
+import PhotoCard from '../../components/PhotoCard';
 import '../../global.css';
 import Nav from '../../components/Nav';
+import Loader from '../../components/Loader';
 
 export type Post =  {
     userId: number;
@@ -20,10 +21,9 @@ type Album = {
     imageUrl?: string;
 }
 
-const Gallery = () => {
+const Albums = () => {
     const [loading, setLoading] = useState(false);
     const [showPosts, setShowPosts] = useState(false);
-    const [userPosts, setUserPosts] = useState<Post[]>([]);
     const [userAlbums, setUserAlbums] = useState<Album[]>([]);
 
     useEffect(() => {
@@ -46,15 +46,15 @@ const Gallery = () => {
     }, []);
 
     if (loading)
-        return <span>Loading...</span>
+        return <Loader />
 
     return (
         <div>
-            <Nav setShowPosts={() => setShowPosts(!showPosts)} showPosts={showPosts} />
+            <Nav />
             <div className="flex">
                 {userAlbums.map(({ id, title, imageUrl }) => {
                     return (
-                        <AlbumCard key={id} id={id} title={title} imageUrl={imageUrl || ''} />
+                        <PhotoCard key={id} id={id} title={title} imageUrl={imageUrl || ''} />
                     )
                 })}
             </div>
@@ -62,4 +62,4 @@ const Gallery = () => {
     )
 }
 
-export default Gallery;
+export default Albums;

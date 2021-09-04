@@ -5,6 +5,7 @@ import { Post } from '../posts';
 import { User } from '../login/types';
 import '../../global.css';
 import Nav from '../../components/Nav';
+import Loader from '../../components/Loader';
 
 
 interface PostWithComments extends Post {
@@ -27,9 +28,8 @@ export type Comment = {
     body: string;
 }
 
-const Galleries = (props:any) => {
+const AllPosts = () => {
     const [loading, setLoading] = useState(false);
-    const [showPosts, setShowPosts] = useState(false);
     const [posts, setPosts] = useState<PostWithComments[]>([]);
 
     useEffect(() => {
@@ -56,16 +56,13 @@ const Galleries = (props:any) => {
         getPosts();
     }, []);
 
-    console.log(posts)
-
     if (loading)
-        return <span>Loading...</span>
+        return <Loader />
 
     return (
         <div>
             <Nav />
-            <h1>Galleries</h1>
-            <div className="flex">
+            <div>
                 {posts.map(({ id, title, body, username, email, date, comments }) => 
                 <Card 
                     key={id} 
@@ -82,4 +79,4 @@ const Galleries = (props:any) => {
     )
 }
 
-export default Galleries;
+export default AllPosts;

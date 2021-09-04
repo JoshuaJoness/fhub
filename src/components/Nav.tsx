@@ -1,43 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import '../global.css';
 
-const Nav = ({setShowPosts, showPosts}: {setShowPosts?:(arg1:boolean) => any, showPosts?: boolean}) => {
+const Nav = () => {
     const [logout, setLogout] = useState(false);
-    const [screensize, setScreenSize] = useState({ width: Infinity, height: Infinity });
-    
-    const isAuthenticated = !!localStorage.getItem('userId');
-    console.log(showPosts,'showPosts')
+
     const handleLogout = () => {
         localStorage.removeItem('userId');
         setLogout(true);
     }
 
-    useEffect(() => {
-        window.addEventListener('resize', () => {
-            setScreenSize({ 
-                width: window.innerWidth, 
-                height: window.innerHeight 
-            })
-        })
-
-    }, [])
-
-    const smallScreenSize = screensize.width < 800; /* TODO UPDATE VALUE */
-
     return logout ? <Redirect to="/login" /> : (
-        <div className="flex-space-between title" style={{ padding: 30, flexDirection:  smallScreenSize ? 'column' : undefined, }}>
+        <div className="flex-space-between title" style={{ padding: 30, flexWrap: 'wrap', backgroundColor: '#36453B' }}>
             <Link to='/' className="app-title">
                 PHOTOAPPY
             </Link>
-            {isAuthenticated ? <>
-            <Link to='/albums'>
-                My Gallery
-            </Link>
-            <Link to='/posts'>
-                My Posts
-            </Link>
-            <button onClick={() => handleLogout()}>LOG-OUT</button></> : null}
+            <div style={{ display: 'flex', alignItems: 'center'}}>
+                <Link to='/albums' style={{ margin: '0px 20px' }}>
+                    <i className="far fa-images" />
+                </Link>
+                <Link to='/posts' style={{ margin: '0px 20px' }}>
+                    <i className="fas fa-keyboard" />
+                </Link>
+                <span 
+                    className="link" 
+                    style={{ marginLeft: 20 }}
+                    onClick={() => handleLogout()}
+                >
+                    LOG-OUT
+                </span>
+            </div>
+
         </div>
     )
 }

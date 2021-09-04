@@ -1,15 +1,8 @@
-.app-title {
-    font-size: 48px;
-}
-
-.ellipsis {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.center-text {
-    text-align: center;
+body {
+    background-color: #fff;
+    font-family: 'Baloo Chettan 2', cursive;
+    font-size: 20px;
+    /* white-space: wrap; */
 }
 
 a:hover {
@@ -20,7 +13,48 @@ a:hover {
 a {
     text-decoration: none;
     font-size: 40px;
-    color: #000
+    color: #F5F9E9;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.link {
+    display: block;
+    font-size: 35px;
+    background-color: #36453B;
+    color: #F5F9E9;
+    font-family: Chewy
+}
+
+.link:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.app-title {
+    font-size: 48px;
+}
+
+.ellipsis {
+    white-space: pre-wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.button {
+    display: block;
+    margin: 15px auto 15px auto;
+    width: 200px;
+    font-size: 35px;
+    background-color: #36453B;
+    color: #F5F9E9;
+    font-family: Chewy 
 }
 
 .border {
@@ -43,12 +77,54 @@ a {
 }
 
 .title {
+    color: #515751;
     font-family: 'Chewy', cursive;
 }
 
+.loader {
+    font-size: 60px;
+    margin: auto;
+}
+
 .card-container {
-    width: 300px;
-    height: 400px;
-    margin: 30px;
-    border: 1px solid black;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    height: auto;
+    margin: 60px;
+    background-color: #515751;
+}
+
+::placeholder { 
+    color: #F5F9E9;
+    opacity: 1;
+}
+  
+:-ms-input-placeholder { 
+    color: #F5F9E9;
+}
+
+::-ms-input-placeholder { 
+    color: #F5F9E9;
+}
+
+.login-input,textarea::placeholder { 
+    color: #596869;
+    opacity: 1;
+    font-size: 20px;
+}
+  
+.login-input,textarea:-ms-input-placeholder { 
+    color: #596869;
+    font-size: 20px;
+}
+
+.login-input,textarea::-ms-input-placeholder { 
+    color: #596869;
+    font-size: 20px;
+}
+
+@media screen and (min-width: 800px) {
+    .card-container {
+        width: 40%;
+        margin: 60px auto !important;
+    }
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState,useEffect } from 'react';
 import { 
   Switch,
   Route,
@@ -7,12 +7,23 @@ import {
 import Login from './views/login';
 import Posts from './views/posts';
 import Albums from './views/albums';
-import Galleries from './views/galleries';
+import AllPosts from './views/allPosts';
 import Album from './views/album';
 
 function App() {
   const isAuthenticated = !!localStorage.getItem('userId');
-  console.log(isAuthenticated)
+  const [screensize, setScreenSize] = useState({ width: Infinity, height: Infinity });
+
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+        setScreenSize({ 
+            width: window.innerWidth, 
+            height: window.innerHeight 
+        })
+    })
+}, [])
+
+const smallScreenSize = screensize.width < 800;
 
   return (
     <div>
@@ -43,8 +54,8 @@ function App() {
           />
           <Route 
             path='/'
-            render={(props) =>
-              isAuthenticated ? <Galleries props={props} /> : <Redirect to="/login" />
+            render={() =>
+              isAuthenticated ? <AllPosts /> : <Redirect to="/login" />
             }
           />
       </Switch>

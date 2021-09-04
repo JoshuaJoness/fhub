@@ -4,6 +4,7 @@ import { FetchImage } from 'random-image-unsplash';
 import Card from '../../components/Card';
 import '../../global.css';
 import Nav from '../../components/Nav';
+import Loader from '../../components/Loader';
 
 export type Post =  {
     userId: number;
@@ -51,12 +52,12 @@ const Posts = () => {
     }, []);
 
     if (loading)
-        return <span>Loading...</span>
+        return <Loader />
 
     return (
         <div>
-            <Nav setShowPosts={() => setShowPosts(!showPosts)} showPosts={showPosts} />
-            <div className="flex">
+            <Nav />
+            <div>
                 {userPosts.map(({ id, title, body, imageUrl }) => {
                     return <Card postId={id} title={title} body={body} imageUrl={imageUrl} hideInput />
                 })}

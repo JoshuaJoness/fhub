@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../../global.css';
-import Card from '../../components/Card';
 import Nav from '../../components/Nav';
+import PhotoCard from '../../components/PhotoCard';
+import '../../global.css';
 
 type Photo =  {
     albumId: number;
@@ -12,15 +12,13 @@ type Photo =  {
     url: string;
 }
 
-const Album = (props: any) => {
+const Album = () => {
     const [userPhotos, setUserPhotos] = useState<Photo[]>([]);
 
     useEffect(() => {
         async function getPhotos() {
-
             const path = window.location.pathname.split('/');
             const id = path[path.length -1 ];
-            console.log(typeof id)
             if (typeof id === 'string') {
                 const { data: photos } = await axios.get<Photo[]>(`https://jsonplaceholder.typicode.com/albums/${id}/photos`);
                 setUserPhotos(photos)
@@ -30,9 +28,11 @@ const Album = (props: any) => {
     }, []);
 
     return (
-        <div className="flex">
+        <div >
             <Nav />
-            {/* {userPhotos.map(({ albumId, id, thumbnailUrl, title, url }) => <Card noLink key={id} imageUrl={url} title={title} />)} */}
+            <div>
+                {userPhotos.map(({ id, thumbnailUrl, title, }) => <PhotoCard id={id} imageUrl={thumbnailUrl} title={title} noLink />)}
+            </div>
         </div>
     )
 }
