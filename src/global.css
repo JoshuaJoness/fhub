@@ -1,15 +1,130 @@
-.ellipsis {
+body {
+    background-color: #fff;
+    font-family: 'Baloo Chettan 2', cursive;
+    font-size: 20px;
+    /* white-space: wrap; */
+}
 
+a:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    font-size: 40px;
+    color: #F5F9E9;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.link {
+    display: block;
+    font-size: 35px;
+    background-color: #36453B;
+    color: #F5F9E9;
+    font-family: Chewy
+}
+
+.link:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.app-title {
+    font-size: 48px;
+}
+
+.ellipsis {
+    white-space: pre-wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .center-text {
     text-align: center;
 }
 
-.pad-text-horionztal {
-    padding: 0px 10px 0px 10px;
+.button {
+    display: block;
+    margin: 15px auto 15px auto;
+    width: 200px;
+    font-size: 35px;
+    background-color: #36453B;
+    color: #F5F9E9;
+    font-family: Chewy 
 }
 
-img:hover {
-    opacity: 0.5;
+.border {
+    border: 1px solid #000;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.flex-space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.title {
+    color: #515751;
+    font-family: 'Chewy', cursive;
+}
+
+.loader {
+    font-size: 60px;
+    margin: auto;
+}
+
+.card-container {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    height: auto;
+    margin: 60px;
+    background-color: #515751;
+}
+
+::placeholder { 
+    color: #F5F9E9;
+    opacity: 1;
+}
+  
+:-ms-input-placeholder { 
+    color: #F5F9E9;
+}
+
+::-ms-input-placeholder { 
+    color: #F5F9E9;
+}
+
+.login-input,textarea::placeholder { 
+    color: #596869;
+    opacity: 1;
+    font-size: 20px;
+}
+  
+.login-input,textarea:-ms-input-placeholder { 
+    color: #596869;
+    font-size: 20px;
+}
+
+.login-input,textarea::-ms-input-placeholder { 
+    color: #596869;
+    font-size: 20px;
+}
+
+@media screen and (min-width: 800px) {
+    .card-container {
+        width: 40%;
+        margin: 60px auto !important;
+    }
 }

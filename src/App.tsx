@@ -1,27 +1,51 @@
 import React from 'react';
 import { 
   Switch,
-  Route
+  Route,
+  Redirect
 } from 'react-router-dom';
 import Login from './views/login';
-import Gallery from './views/gallery';
+import Posts from './views/posts';
+import Albums from './views/albums';
+import AllPosts from './views/allPosts';
+import Album from './views/album';
 
 function App() {
+  const isAuthenticated = !!localStorage.getItem('userId');
+
   return (
     <div>
       <Switch>
-          <Route path='/login'>
-              <Login />
-          </Route>
-          <Route path='/'>
-              <Gallery />
-          </Route>
-          <Route path='/photo/:id'>
-              <Login />
-          </Route>
-        <Route path='/logout'>
-            <Login />
-        </Route>
+        <Route 
+              path='/albums/:id'
+              render={() =>
+                isAuthenticated ? <Album /> : <Redirect to="/login" />
+              }
+            />
+        <Route 
+            path='/albums'
+            render={() =>
+              isAuthenticated ? <Albums /> : <Redirect to="/login" />
+            }
+          />
+          <Route 
+            path='/posts'
+            render={() =>
+              isAuthenticated ? <Posts /> : <Redirect to="/login" />
+            }
+          />
+          <Route 
+            path='/login'
+            render={(props) =>
+              <Login props={props} />
+            }
+          />
+          <Route 
+            path='/'
+            render={() =>
+              isAuthenticated ? <AllPosts /> : <Redirect to="/login" />
+            }
+          />
       </Switch>
     </div>
   );
