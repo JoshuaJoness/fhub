@@ -1,6 +1,6 @@
 # Getting Started with fHub
 
-Prerequisites:
+## Prerequisites:
 * clone repository to your machine
 * in your terminal run `npm install`
 * then run `npm start` to run the application locally
