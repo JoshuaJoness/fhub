@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from '../../components/Card';
+import { Helmet } from "react-helmet";
 import '../../global.css';
 import Nav from '../../components/Nav';
 import Loader from '../../components/Loader';
+import '../../global.css';
 
 export type Post =  {
     userId: number;
@@ -22,8 +24,7 @@ const Posts = () => {
             setLoading(true);
             const { data: posts } = await axios.get<Post[]>('https://jsonplaceholder.typicode.com/posts');
             const userToken = Number(localStorage.getItem('userId'));
-            const userPostsPromises = posts.filter(post => post.userId === userToken);
-            const userPosts = await Promise.all(userPostsPromises);
+            const userPosts = posts.filter(post => post.userId === userToken);
             setUserPosts(userPosts);
             setLoading(false);
         }
@@ -35,6 +36,9 @@ const Posts = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>My Posts</title>
+            </Helmet>
             <Nav />
             <div>
                 {userPosts.map(({ id, title, body, imageUrl }) => {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Helmet } from "react-helmet";
 import Nav from '../../components/Nav';
 import PhotoCard from '../../components/PhotoCard';
 import '../../global.css';
@@ -27,8 +28,13 @@ const Album = () => {
         getPhotos();
     }, []);
 
+    console.log(window.location)
+
     return (
-        <div >
+        <div>
+            <Helmet>
+                <title>My Album</title>
+            </Helmet>
             <Nav />
             <div>
                 {userPhotos.map(({ id, thumbnailUrl, title, }) => <PhotoCard key={id} id={id} imageUrl={thumbnailUrl} title={title} noLink />)}

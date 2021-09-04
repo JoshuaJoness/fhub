@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FetchImage } from 'random-image-unsplash';
+import { Helmet } from "react-helmet";
 import PhotoCard from '../../components/PhotoCard';
 import '../../global.css';
 import Nav from '../../components/Nav';
@@ -49,6 +50,9 @@ const Albums = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>My Albums</title>
+            </Helmet>
             <Nav />
             <div className="flex">
                 {userAlbums.map(({ id, title, imageUrl }) => {

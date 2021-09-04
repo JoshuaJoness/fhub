@@ -81,13 +81,13 @@ const Card = ({ postId, imageUrl, title, body, comments, username, email, date, 
                 <div>
                     <input
                         placeholder="A Really Cool Title!" 
-                        style={{ fontSize: 22, display: 'block', margin: 15, border: 'none', borderBottom: '1px solid #F5F9E9', backgroundColor: 'transparent', height: 50 , color: '#F5F9E9' }} 
+                        style={{ fontSize: 22, display: 'block', margin: 15, border: 'none', borderBottom: '1px solid #515751', backgroundColor: 'transparent', height: 50 , color: '#515751' }} 
                         value={userCommentTitle} 
                         onChange={e => handleTitleInput(e.target.value)}
                     />
                     <textarea
                         placeholder="An awesome, cool story that I'm about to tell..." 
-                        style={{ resize: 'none', height: 100, marginLeft: 15, backgroundColor: '#eee', width: '80%', fontSize: 20, color: '#515751' }} 
+                        style={{ resize: 'none', height: 100, marginLeft: 15, backgroundColor: '#fff', width: '95%', fontSize: 20, color: '#515751', border: 'none', padding: 10 }} 
                         value={userComment} 
                         onChange={e => handleInput(e.target.value)} 
                     />

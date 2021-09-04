@@ -1,6 +1,7 @@
 import React, {  useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { Helmet } from "react-helmet";
 import { User } from './types';
 
 const Login = (props: any) => {
@@ -25,6 +26,9 @@ const Login = (props: any) => {
 
     return (
         <div style={{ textAlign: 'center', marginTop: '30vh' }}>
+            <Helmet>
+                <title>Log In</title>
+            </Helmet>
             <h1 className="title" style={{ position: 'absolute', top: 0, left: 30, fontSize: 48 }}>PHOTOAPPY</h1>
             <form 
                 onChange={(e: any) => {

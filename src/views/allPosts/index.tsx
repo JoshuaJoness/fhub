@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Helmet } from "react-helmet";
 import Card from '../../components/Card';
 import { Post } from '../posts';
 import { User } from '../login/types';
-import '../../global.css';
 import Nav from '../../components/Nav';
 import Loader from '../../components/Loader';
+import '../../global.css';
 
 
 interface PostWithComments extends Post {
@@ -60,7 +61,10 @@ const AllPosts = () => {
         return <Loader />
 
     return (
-        <div>
+        <div>            
+            <Helmet>
+                <title>All Posts</title>
+            </Helmet>
             <Nav />
             <div>
                 {posts.map(({ id, title, body, username, email, date, comments }) => 

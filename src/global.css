@@ -81,6 +81,11 @@ button:hover {
     font-family: 'Chewy', cursive;
 }
 
+.no-hover:hover {
+    opacity: 1;
+    cursor: default;
+}
+
 .loader {
     font-size: 60px;
     margin: auto;
@@ -90,20 +95,20 @@ button:hover {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     height: auto;
     margin: 60px;
-    background-color: #515751;
+    background-color: #F5F9E9;
 }
 
 ::placeholder { 
-    color: #F5F9E9;
+    color: #596869;
     opacity: 1;
 }
   
 :-ms-input-placeholder { 
-    color: #F5F9E9;
+    color: #596869;
 }
 
 ::-ms-input-placeholder { 
-    color: #F5F9E9;
+    color: #596869;
 }
 
 .login-input,textarea::placeholder { 
