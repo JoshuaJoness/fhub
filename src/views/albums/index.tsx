@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FetchImage } from 'random-image-unsplash';
-import Card from '../../components/Card';
+import AlbumCard from '../../components/AlbumCard';
 import '../../global.css';
+import Nav from '../../components/Nav';
 
 export type Post =  {
     userId: number;
@@ -27,15 +28,10 @@ const Gallery = () => {
 
     useEffect(() => {
         async function getUsers() {
-            const { data: posts } = await axios.get<Post[]>('https://jsonplaceholder.typicode.com/posts');
-            const userToken = Number(localStorage.getItem('loginToken'));
-            const userPostsPromises = posts.filter(post => post.userId === userToken);
-            const userPosts = await Promise.all(userPostsPromises);
-            setUserPosts(userPosts);
-
+            const userId = Number(localStorage.getItem('userId'));
             const { data: albums } = await axios.get<Album[]>('https://jsonplaceholder.typicode.com/albums');
             setLoading(true);
-            const userAlbumsPromises = albums.filter(album => album.userId === userToken).map(async(album) => { // not ideal due to double iteration, can optimize
+            const userAlbumsPromises = albums.filter(album => album.userId === userId).map(async(album) => { // not ideal due to double iteration, can optimize
                 const imageUrl = await FetchImage({ type: 'user', width: 1000, height: 500 }).then((image: string) => image);
                 return { 
                     ...album, 
@@ -54,17 +50,11 @@ const Gallery = () => {
 
     return (
         <div>
-            <h2 onClick={() => setShowPosts(!showPosts)} className="center-text">Show {showPosts ? 'Albums' : 'Posts'}</h2>
+            <Nav setShowPosts={() => setShowPosts(!showPosts)} showPosts={showPosts} />
             <div className="flex">
-                {showPosts ? userPosts.map(({ id, title, body, imageUrl }) => {
+                {userAlbums.map(({ id, title, imageUrl }) => {
                     return (
-                        <span>UPDATE</span>
-                        // <Card key={id} title={title} body={body} imageUrl={imageUrl || ''} />
-                    )
-                }) : userAlbums.map(({ id, title, imageUrl }) => {
-                    return (
-                        <span>UPDATE</span>
-                        // <Card key={id} id={id} title={title} imageUrl={imageUrl || ''} />
+                        <AlbumCard key={id} id={id} title={title} imageUrl={imageUrl || ''} />
                     )
                 })}
             </div>

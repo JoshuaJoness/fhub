@@ -1,26 +1,38 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { User } from './types';
 
-const Login = () => {
+const Login = (props: any) => {
     const [username, setUsername] = useState<EventTarget | string>('');
     const [err, setErr] = useState(false);
     const [verified, setVerified] = useState(false);
 
+    const history = useHistory();
+
     const submitHandler = async (e: any) => { // TODO find correct type for 'e'
-        if (!username || (typeof username === 'string' && username.split('').length === 0))
-            setErr(true);
         e.preventDefault();
+
+        const invalidUsername = !username || (typeof username === 'string' && username.split('').length === 0);
+        if (invalidUsername)
+            setErr(true);
+       
         const { data: users } = await axios.get('https://jsonplaceholder.typicode.com/users');
         const match = users.find((user: User) => user.username === username);
         if (match) {
-            localStorage.setItem('loginToken', JSON.stringify(match.id));
-            setVerified(true);
+            localStorage.setItem('userId', JSON.stringify(match.id));
+            // setVerified(true);
+            console.log(history)
+            history.push({ pathname:'/' })
         }
     };
 
-    return verified ? <Redirect to="/" /> : (
+    useEffect(() => {
+        console.log(verified, 'VERIFIED')
+    }, [verified])
+
+    return (
         <div style={{ textAlign: 'center', marginTop: '30vh' }}>
             <h1>LOGIN</h1>
             <form 

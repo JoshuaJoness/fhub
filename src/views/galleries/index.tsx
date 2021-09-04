@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from '../../components/Card';
-import { Post } from '../gallery';
+import { Post } from '../posts';
 import { User } from '../login/types';
 import '../../global.css';
+import Nav from '../../components/Nav';
 
 
 interface PostWithComments extends Post {
@@ -26,13 +27,14 @@ export type Comment = {
     body: string;
 }
 
-const Galleries = () => {
+const Galleries = (props:any) => {
     const [loading, setLoading] = useState(false);
     const [showPosts, setShowPosts] = useState(false);
     const [posts, setPosts] = useState<PostWithComments[]>([]);
 
     useEffect(() => {
         async function getPosts() {
+            setLoading(true);
             const { data: posts } = await axios.get<Post[]>('https://jsonplaceholder.typicode.com/posts');
 
             const postCommentsPromises = posts.map(async post => {
@@ -49,6 +51,7 @@ const Galleries = () => {
 
             const postComments = await Promise.all(postCommentsPromises);
             setPosts(postComments.sort((a, b) => b.date.getTime() - a.date.getTime())); // sort results by appended date
+            setLoading(false);
         }
         getPosts();
     }, []);
@@ -60,6 +63,7 @@ const Galleries = () => {
 
     return (
         <div>
+            <Nav />
             <h1>Galleries</h1>
             <div className="flex">
                 {posts.map(({ id, title, body, username, email, date, comments }) => 

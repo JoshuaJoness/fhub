@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../global.css';
 import Card from '../../components/Card';
+import Nav from '../../components/Nav';
 
 type Photo =  {
     albumId: number;
@@ -30,6 +31,7 @@ const Album = (props: any) => {
 
     return (
         <div className="flex">
+            <Nav />
             {/* {userPhotos.map(({ albumId, id, thumbnailUrl, title, url }) => <Card noLink key={id} imageUrl={url} title={title} />)} */}
         </div>
     )
