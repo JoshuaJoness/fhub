@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Helmet } from 'react-helmet';
 import { User } from './types';
 
-const Login = (props: any) => {
+const Login = () => {
     const [username, setUsername] = useState<EventTarget | string>('');
     const [err, setErr] = useState(false);
     const history = useHistory();

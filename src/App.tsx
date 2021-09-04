@@ -36,8 +36,8 @@ function App() {
           />
           <Route 
             path='/login'
-            render={(props) =>
-              <Login props={props} />
+            render={() =>
+              <Login />
             }
           />
           <Route 
